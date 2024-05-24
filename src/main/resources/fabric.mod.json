@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "minekart",
+	"version": "${version}",
+	"name": "Minekart",
+	"description": "A fun little Minecraft mod where we enhance boat racing!",
+	"authors": [
+		"Gabriel Nicolas, Isfar Babul, and Atif Ali!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/minekart/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.gabriel.minekart.Minekart"
+		],
+		"client": [
+			"net.gabriel.minekart.MinekartClient"
+		],
+		"fabric-datagen": [
+			"net.gabriel.minekart.MinekartDataGenerator"
+		]
+	},
+	"mixins": [
+		"minekart.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
