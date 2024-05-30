@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"2": "vanilla_ice_cream",
+		"2": "minekart:item/vanilla_ice_cream",
 		"particle": "minekart:item/vanilla_ice_cream"
 	},
 	"elements": [
@@ -67,8 +67,8 @@
 			}
 		},
 		{
-			"from": [6, 0, 6],
-			"to": [10, 4, 10],
+			"from": [7, 0, 7],
+			"to": [9, 4, 9],
 			"faces": {
 				"north": {"uv": [7, 1, 8, 2], "texture": "#2"},
 				"east": {"uv": [6, 1, 7, 2], "texture": "#2"},
@@ -82,22 +82,20 @@
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [-161.25, 15, 180],
-			"translation": [0, 3, 4],
-			"scale": [0.8, 0.8, 0.8]
+			"translation": [0, 4, 4]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [-161.25, 15, 180],
-			"translation": [0, 3, 4],
-			"scale": [0.8, 0.8, 0.8]
+			"translation": [0, 4, 4]
 		},
 		"firstperson_righthand": {
 			"rotation": [-10, 0, 0],
-			"translation": [0, 4.75, 0.5],
+			"translation": [-0.75, 4.75, 0.5],
 			"scale": [0.7, 0.7, 0.7]
 		},
 		"firstperson_lefthand": {
 			"rotation": [-10, 0, 0],
-			"translation": [0, 4.75, 0.5],
+			"translation": [-0.75, 4.75, 0.5],
 			"scale": [0.7, 0.7, 0.7]
 		},
 		"ground": {
