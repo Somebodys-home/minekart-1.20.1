@@ -1,3 +1,5 @@
 {
-  "item.minekart.vanillaicecream": "Vanilla Ice Cream"
+  "item.minekart.vanilla_ice_cream": "Vanilla Ice Cream",
+
+  "itemgroup.minekart": "Minekart"
 }

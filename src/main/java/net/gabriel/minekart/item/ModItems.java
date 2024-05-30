@@ -11,9 +11,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-    public static final Item VANILLA_ICE_CREAM = registerItem("vanillaicecream", new Item(new FabricItemSettings()));
+    public static final Item VANILLA_ICE_CREAM = registerItem("vanilla_ice_cream", new Item(new FabricItemSettings().food(ModFoodComponents.VANILLA_ICE_CREAM)));
 
-    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
+    private static void addItemsToFoodAndDrinksItemGroup(FabricItemGroupEntries entries) {
         entries.add(VANILLA_ICE_CREAM);
     }
     private static Item registerItem(String name, Item item) {
@@ -22,6 +22,6 @@ public class ModItems {
 
     public static void registerModItems() {
         Minekart.LOGGER.info("Registering Mod Items for " + Minekart.MOD_ID);
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToFoodAndDrinksItemGroup);
     }
 }

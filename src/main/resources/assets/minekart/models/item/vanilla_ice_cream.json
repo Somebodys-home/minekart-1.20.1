@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"2": "vanillaicecream3d",
-		"particle": "minekart:item/vanillaicecream3d"
+		"2": "minekart:item/vanilla_ice_cream",
+		"particle": "minekart:item/vanilla_ice_cream"
 	},
 	"elements": [
 		{
