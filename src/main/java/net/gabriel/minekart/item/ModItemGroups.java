@@ -18,6 +18,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(Items.BLUE_ICE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.VANILLA_ICE_CREAM);
                         entries.add(MysteryBox.MYSTERY_BLOCK);
+                        entries.add(ModItems.SPEED_BUMP);
 
                     }).build());
 
