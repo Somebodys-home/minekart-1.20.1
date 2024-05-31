@@ -6,28 +6,44 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.gabriel.minekart.Minekart;
 import net.gabriel.minekart.item.ModFoodComponents;
 import net.gabriel.minekart.item.ModItems;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class VanillaIceCreamItem extends Item {
-    public VanillaIceCreamItem(Settings settings) {
-        super(settings);
+import java.util.List;
+
+public class VanillaIceCreamItem extends net.minecraft.item.Item {
+    private static FoodComponent foodComponent;
+    private static int cooldown;
+
+    public VanillaIceCreamItem(FoodComponent foodComponent, int cooldown) {
+        super(new FabricItemSettings().maxCount(1).food(foodComponent));
+        this.foodComponent = foodComponent;
+        this.cooldown = cooldown;
     }
 
-    public static final Item VANILLA_ICE_CREAM = registerItem("vanilla_ice_cream", new Item(new FabricItemSettings().food(ModFoodComponents.VANILLA_ICE_CREAM)));
-
-    private static void addItemsToFoodAndDrinksItemGroup(FabricItemGroupEntries entries) {
-        entries.add(VANILLA_ICE_CREAM);
-    }
-    private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(Minekart.MOD_ID, name), item);
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) { // todo: this doesnt work but idrc about that ill do it later
+        tooltip.add(Text.translatable("tooltip.minekart.vanilla_ice_cream.tooltip"));
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
-    public static void registerModItems() {
-        Minekart.LOGGER.info("Registering Mod Items for " + Minekart.MOD_ID);
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(ModItems::addItemsToFoodAndDrinksItemGroup);
+    @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        if (user instanceof PlayerEntity player) {
+            player.getItemCooldownManager().set(this, cooldown);
+            player.getHungerManager().add(foodComponent.getHunger(), foodComponent.getSaturationModifier());
+        }
+        return stack;
     }
 }

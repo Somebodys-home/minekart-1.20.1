@@ -1,5 +1,7 @@
 {
   "item.minekart.vanilla_ice_cream": "Vanilla Ice Cream",
 
-  "itemgroup.minekart": "Minekart"
+  "itemgroup.minekart": "Minekart",
+
+  "tooltip.minekart.vanilla_ice_cream.tooltip": "Out of all the custom abilities implemented that could've helped you in a race, you went for the goddamn ice cream. Godspeed homie, it seems like you need it."
 }
