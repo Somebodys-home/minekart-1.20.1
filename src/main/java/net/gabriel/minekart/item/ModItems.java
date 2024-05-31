@@ -12,6 +12,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
+    public static final Item VANILLA_ICE_CREAM = registerItem("vanilla_ice_cream", new Item(new FabricItemSettings().food(ModFoodComponents.VANILLA_ICE_CREAM)));
+    public static final Item SPEED_BUMP = registerItem("speed_bump", new Item(new FabricItemSettings()));
+
     private final String id;
     private final Item item;
 
@@ -33,12 +36,18 @@ public class ModItems {
     public static void addItemsToFoodAndDrinksItemGroup(FabricItemGroupEntries entries) {
         entries.add(VANILLA_ICE_CREAM);
     }
+
+    public static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
+        entries.add(SPEED_BUMP);
+    }
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Minekart.MOD_ID, name), item);
     }
 
     public static void registerModItems() {
         Minekart.LOGGER.info("Registering Mod Items for " + Minekart.MOD_ID);
+
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(ModItems::addItemsToFoodAndDrinksItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);
     }
 }

@@ -1,7 +1,9 @@
 {
   "item.minekart.vanilla_ice_cream": "Vanilla Ice Cream",
 
-  "itemgroup.minekart": "Minekart",
+  "item.minekart.speed_bump": "Speed Bump",
 
-  "tooltip.minekart.vanilla_ice_cream.tooltip": "Out of all the custom abilities implemented that could've helped you in a race, you went for the goddamn ice cream. Godspeed homie, it seems like you need it."
+  "block.minekart.mystery_block": "Mystery Block",
+
+  "itemgroup.minekart": "Minekart"
 }

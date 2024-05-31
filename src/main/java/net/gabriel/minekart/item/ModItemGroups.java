@@ -2,6 +2,7 @@ package net.gabriel.minekart.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.gabriel.minekart.Minekart;
+import net.gabriel.minekart.block.MysteryBox;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -16,6 +17,8 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.minekart"))
                     .icon(() -> new ItemStack(Items.BLUE_ICE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.VANILLA_ICE_CREAM);
+                        entries.add(MysteryBox.MYSTERY_BLOCK);
+                        entries.add(ModItems.SPEED_BUMP);
 
                     }).build());
 
