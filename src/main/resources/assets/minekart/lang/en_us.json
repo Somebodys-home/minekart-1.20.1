@@ -5,5 +5,7 @@
 
   "block.minekart.mystery_block": "Mystery Block",
 
-  "itemgroup.minekart": "Minekart"
+  "itemgroup.minekart": "Minekart",
+
+  "tooltip.minekart.vanilla_ice_cream.tooltip": "You're a special breed of dumbass no person with motor skills should reasonably be."
 }
