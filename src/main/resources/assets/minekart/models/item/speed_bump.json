@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "texture": {
-    "all": "tutorialmod:item/speed_bump"
-  }
-}
