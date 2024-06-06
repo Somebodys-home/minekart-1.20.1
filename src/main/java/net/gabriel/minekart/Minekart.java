@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.gabriel.minekart.item.ModItemGroups;
 import net.gabriel.minekart.item.ModItems;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -23,6 +24,7 @@ import net.minecraft.text.Text;
 public class Minekart implements ModInitializer {
 	public static final String MOD_ID = "minekart";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public PassiveAbilitySelectScreen passiveAbilitySelectScreen = new PassiveAbilitySelectScreen();
 
 	//tracking when the player breaks a dirt block for testing purposes
 	public static final Identifier DIRT_BROKEN = new Identifier(MOD_ID, "dirt_broken");
@@ -40,7 +42,7 @@ public class Minekart implements ModInitializer {
 				.executes(context -> {
 					// For versions below 1.19, replace "Text.literal" with "new LiteralText".
 					// For versions below 1.20, remode "() ->" directly.
-					context.getSource().sendFeedback(() -> Text.literal("Lmao this shit aint gonna work, watch"), true);
+					context.getSource().sendFeedback(() -> MinecraftClient.getInstance().setScreen(new PassiveAbilitySelectScreen()));
 
 					return 1;
 				})));
