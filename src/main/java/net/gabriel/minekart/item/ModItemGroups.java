@@ -20,6 +20,7 @@ public class ModItemGroups {
                         // entries.add(MysteryBox.MYSTERY_BLOCK);
                         entries.add(ModItems.SPEED_BUMP);
                         entries.add(ModItems.CLOAK_OF_INVISIBILITY);
+                        entries.add(ModItems.FIREWORK_CROSSBOW);
 
                     }).build());
 

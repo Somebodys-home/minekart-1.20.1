@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.gabriel.minekart.Minekart;
 import net.gabriel.minekart.item.custom.SpeedBumpItem;
+import net.gabriel.minekart.item.custom.FireworkCrossbowItem;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -17,6 +18,7 @@ public class ModItems {
     public static final Item SPEED_BUMP = registerItem("speed_bump", new SpeedBumpItem(new FabricItemSettings()));
 
     public static final Item CLOAK_OF_INVISIBILITY = registerItem("speed_bump", new ArmorItem(ModArmorMaterials.CLOAK, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item FIREWORK_CROSSBOW = registerItem("firework_crossbow", new FireworkCrossbowItem(new FabricItemSettings().maxDamage(100)));
 
     private final String id;
     private final Item item;
@@ -40,6 +42,7 @@ public class ModItems {
 
     public static void addItemsToToolItemGroup(FabricItemGroupEntries entries) {
         entries.add(SPEED_BUMP);
+        entries.add(FIREWORK_CROSSBOW);
     }
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Minekart.MOD_ID, name), item);
