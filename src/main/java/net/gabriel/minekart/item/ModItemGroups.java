@@ -19,8 +19,9 @@ public class ModItemGroups {
                         entries.add(ModItems.VANILLA_ICE_CREAM);
                         // entries.add(MysteryBox.MYSTERY_BLOCK);
                         entries.add(ModItems.SPEED_BUMP);
-                        entries.add(ModItems.CLOAK_OF_INVISIBILITY);
+//                        entries.add(ModItems.CLOAK_OF_INVISIBILITY);
                         entries.add(ModItems.FIREWORK_CROSSBOW);
+                        entries.add(ModItems.ARROW_RAIN);
 
                     }).build());
 

@@ -38,10 +38,10 @@ public class PassiveAbilitySelectScreen extends Screen {
 //        addDrawableChild(button2);
 //    }
 
-    @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        for (Drawable drawable : this.drawables) {
-            drawable.render(context, mouseX, mouseY, delta);
-        }
-    }
+//    @Override
+//    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+//        for (Drawable drawable : this.drawables) {
+//            drawable.render(context, mouseX, mouseY, delta);
+//        }
+//    }
 }

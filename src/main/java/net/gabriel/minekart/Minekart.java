@@ -42,7 +42,7 @@ public class Minekart implements ModInitializer {
 				.executes(context -> {
 					// For versions below 1.19, replace "Text.literal" with "new LiteralText".
 					// For versions below 1.20, remode "() ->" directly.
-					context.getSource().sendFeedback(() -> MinecraftClient.getInstance().setScreen(new PassiveAbilitySelectScreen()));
+//					context.getSource().sendFeedback(() -> MinecraftClient.getInstance().setScreen(new PassiveAbilitySelectScreen()));
 
 					return 1;
 				})));
