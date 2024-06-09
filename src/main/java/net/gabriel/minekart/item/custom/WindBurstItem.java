@@ -1,12 +1,14 @@
 package net.gabriel.minekart.item.custom;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.gabriel.minekart.util.ServerScheduler;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -36,10 +38,19 @@ public class WindBurstItem extends Item {
         ItemStack stack = player.getStackInHand(hand);
 
         if (world.isClient) {
-            if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity) {
-                BoatEntity boat = (BoatEntity) player.getVehicle();
+            if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity boat) {
                 boat.addVelocity(0, .7, 0);
-                boat.velocityModified = true;
+                world.addParticle(ParticleTypes.EXPLOSION, boat.getX(), boat.getY(), boat.getZ(), 0, 0 ,0);
+
+                for (int i = 0; i < 100; i++) {
+                    ServerScheduler.schedule(() -> {
+                        double x = boat.getX();
+                        double y = boat.getY();
+                        double z = boat.getZ();
+
+                        world.addParticle(ParticleTypes.CLOUD, x, y, z, 0, 0 ,0);
+                    }, 1);
+                }
             }
         }
 

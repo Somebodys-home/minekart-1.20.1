@@ -1,6 +1,8 @@
 package net.gabriel.minekart.item.custom;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.gabriel.minekart.mixin.BoatClientAccessor;
+import net.gabriel.minekart.mixin.BoatMixin;
 import net.gabriel.minekart.util.ServerScheduler;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.particle.CampfireSmokeParticle;
@@ -27,7 +29,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class FireworkItem extends Item {
-
     public FireworkItem() {
         super(new FabricItemSettings().maxCount(1));
     }
@@ -45,21 +46,21 @@ public class FireworkItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
-        BoatEntity boat = (BoatEntity) player.getVehicle();
 
         if (world.isClient) {
             if (hand == Hand.MAIN_HAND) {
-                if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity) {
-                    // todo: revert this after testing for particles
+                if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity boat) {
+                    // for testing
                     // boat.addVelocity(boat.getHorizontalFacing().getOffsetX() * 1.5, 0, boat.getHorizontalFacing().getOffsetZ() * 1.5);
-                    boat.velocityModified = true;
-                    world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_FIREWORK_ROCKET_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 
-                    world.addParticle(ParticleTypes.FIREWORK, 0, boat.getY() + 1, boat.getZ() - 1, 0, 0, boat.getHorizontalFacing().getOffsetZ() * -1.2);                }
-                    System.out.println(boat.getHorizontalFacing().getOffsetX() + " " + boat.getHorizontalFacing().getOffsetZ() + 1);
+                    world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_FIREWORK_ROCKET_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                    world.addParticle(ParticleTypes.FIREWORK, true, boat.getX(), boat.getY() + .5, boat.getZ(), ((BoatClientAccessor) boat).getBoatYaw() * -.25, 0, ((BoatClientAccessor) boat).getBoatYaw() * -.25);
+
+                    // for testing
+                    System.out.println(((BoatClientAccessor) boat).getBoatYaw() + " " + ((BoatClientAccessor) boat).getBoatYaw() * -.25);
+                }
             }
         }
-
         stack.decrement(1);
         return new TypedActionResult<>(ActionResult.SUCCESS, stack);
     }
