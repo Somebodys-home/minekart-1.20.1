@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.gabriel.minekart.item.ModItemGroups;
 import net.gabriel.minekart.item.ModItems;
+import net.gabriel.minekart.block.ModBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.PacketByteBuf;
@@ -36,6 +37,7 @@ public class Minekart implements ModInitializer {
 	public void onInitialize() {
 		ModItems.registerModItems();
 		ModItemGroups.registerItemGroups();
+		ModBlocks.registerModBlocks();
 
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("selectpassive")
 				// make this so that you have to be in a boat .requires(source -> source.)

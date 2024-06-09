@@ -2,7 +2,7 @@ package net.gabriel.minekart.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.gabriel.minekart.Minekart;
-import net.gabriel.minekart.block.MysteryBox;
+import net.gabriel.minekart.block.ModBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -22,6 +22,7 @@ public class ModItemGroups {
 //                        entries.add(ModItems.CLOAK_OF_INVISIBILITY);
                         entries.add(ModItems.FIREWORK_CROSSBOW);
                         entries.add(ModItems.ARROW_RAIN);
+                        entries.add(ModBlocks.MYSTERY_BLOCK);
 
                     }).build());
 
