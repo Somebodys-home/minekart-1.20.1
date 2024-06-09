@@ -24,18 +24,19 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 public class Minekart implements ModInitializer {
 	public static final String MOD_ID = "minekart";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	// public PassiveAbilitySelectScreen passiveAbilitySelectScreen = new PassiveAbilitySelectScreen();
+//	public PassiveAbilitySelectScreen passiveAbilitySelectScreen = new PassiveAbilitySelectScreen();
 
-	//tracking when the player breaks a dirt block for testing purposes
-	public static final Identifier DIRT_BROKEN = new Identifier(MOD_ID, "dirt_broken");
-
-	private Integer totalDirtBlocksBroken = 0;
+//	//tracking when the player breaks a dirt block for testing purposes
+//	public static final Identifier DIRT_BROKEN = new Identifier(MOD_ID, "dirt_broken");
+//
+//	private Integer totalDirtBlocksBroken = 0;
 
 
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
 		ModItemGroups.registerItemGroups();
+		ModBlocks.registerModBlocks();
 
 //		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("selectpassive")
 //				// make this so that you have to be in a boat .requires(source -> source.)

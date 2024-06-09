@@ -31,8 +31,6 @@ public class ModItems {
         return item;
     }
 
-    public static final Item VANILLA_ICE_CREAM = registerItem("vanilla_ice_cream", new VanillaIceCreamItem(ModFoodComponents.VANILLA_ICE_CREAM, 25));
-
     public static void addItemsToFoodAndDrinksItemGroup(FabricItemGroupEntries entries) {
         entries.add(VANILLA_ICE_CREAM);
     }
