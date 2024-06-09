@@ -3,11 +3,18 @@ package net.gabriel.minekart.item.custom;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.gabriel.minekart.util.ServerScheduler;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.particle.CampfireSmokeParticle;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleManager;
+import net.minecraft.client.particle.ParticleTextureSheet;
+import net.minecraft.client.render.Camera;
+import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -38,15 +45,18 @@ public class FireworkItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
+        BoatEntity boat = (BoatEntity) player.getVehicle();
 
         if (world.isClient) {
             if (hand == Hand.MAIN_HAND) {
                 if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity) {
-                    BoatEntity boat = (BoatEntity) player.getVehicle();
-                    boat.addVelocity(boat.getHorizontalFacing().getOffsetX() * 1.5, 0, boat.getHorizontalFacing().getOffsetZ() * 1.5);
+                    // todo: revert this after testing for particles
+                    // boat.addVelocity(boat.getHorizontalFacing().getOffsetX() * 1.5, 0, boat.getHorizontalFacing().getOffsetZ() * 1.5);
                     boat.velocityModified = true;
                     world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_FIREWORK_ROCKET_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F);
-                }
+
+                    world.addParticle(ParticleTypes.FIREWORK, 0, boat.getY() + 1, boat.getZ() - 1, 0, 0, boat.getHorizontalFacing().getOffsetZ() * -1.2);                }
+                    System.out.println(boat.getHorizontalFacing().getOffsetX() + " " + boat.getHorizontalFacing().getOffsetZ() + 1);
             }
         }
 
