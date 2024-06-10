@@ -42,10 +42,6 @@ public class SpeedBumpItem extends Item {
                 boat.setVelocity(boat.getVelocity().add(0, 1, 0));
                 boat.velocityModified = true;
                 player.sendMessage(Text.literal("test"), true);
-            } else {
-                player.setVelocity(player.getVelocity().add(0, 1, 0));
-                player.velocityModified = true;
-                player.sendMessage(Text.literal("test"), true); //delete later
             }
         }
 
