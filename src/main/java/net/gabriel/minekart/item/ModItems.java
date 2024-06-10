@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.gabriel.minekart.Minekart;
 import net.gabriel.minekart.item.custom.ArrowRainItem;
+import net.gabriel.minekart.item.custom.InvisappleItem;
 import net.gabriel.minekart.item.custom.SpeedBumpItem;
 import net.gabriel.minekart.item.custom.FireworkCrossbowItem;
 import net.minecraft.block.Block;
@@ -20,6 +21,8 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
     public static final Item VANILLA_ICE_CREAM = registerItem("vanilla_ice_cream", new Item(new FabricItemSettings().food(ModFoodComponents.VANILLA_ICE_CREAM)));
+
+    public static final Item INVISAPPLE = registerItem("invisapple", new InvisappleItem(new FabricItemSettings().maxDamage(1)));
     public static final Item SPEED_BUMP = registerItem("speed_bump", new SpeedBumpItem(new FabricItemSettings()));
     public static final Item ARROW_RAIN = registerItem("arrow_rain", new ArrowRainItem(new FabricItemSettings()));
 

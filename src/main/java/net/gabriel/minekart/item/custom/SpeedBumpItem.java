@@ -43,6 +43,7 @@ public class SpeedBumpItem extends Item {
                 player.sendMessage(Text.literal("You used the Speed Bump!"), true);
             }
         }
+        //super.use(world, player, hand);
 
         return new TypedActionResult<>(ActionResult.SUCCESS, stack);
     }
