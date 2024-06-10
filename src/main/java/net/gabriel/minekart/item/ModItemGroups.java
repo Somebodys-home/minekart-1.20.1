@@ -17,6 +17,7 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.minekart"))
                     .icon(() -> new ItemStack(Items.BLUE_ICE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.VANILLA_ICE_CREAM);
+                        entries.add(ModItems.INVISAPPLE);
                         // entries.add(MysteryBox.MYSTERY_BLOCK);
                         entries.add(ModItems.WIND_BURST);
                         entries.add(ModItems.FIREWORK);
