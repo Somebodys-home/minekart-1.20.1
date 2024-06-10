@@ -45,6 +45,7 @@ public class MysteryBlock extends Block {
                 // Grant a random ability item to the player
                 giveRandomAbilityItem((ServerWorld) world, player);
 
+
                 // Reset the block after a short delay
                 world.scheduleBlockTick(pos, this, 100);
             }

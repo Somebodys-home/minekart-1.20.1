@@ -39,7 +39,7 @@ public class FireworkCrossbowItem extends Item {
             } else if (hand == Hand.OFF_HAND) {
                 if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity) {
                     BoatEntity boat = (BoatEntity) player.getVehicle();
-                    boat.setVelocity(boat.getVelocity().add(10, 0, 10));
+                    boat.setVelocity(0, 0, 0);
                     boat.velocityModified = true;
                     world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_BOAT_PADDLE_WATER, SoundCategory.PLAYERS, 1.0F, 1.0F);
                     player.sendMessage(Text.literal("Firework boost applied to boat!"), true);

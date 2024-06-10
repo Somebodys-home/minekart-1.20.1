@@ -1,5 +1,6 @@
 package net.gabriel.minekart.item.custom;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.Item;
@@ -34,7 +35,7 @@ public class ArrowRainItem extends Item {
 
         if (!world.isClient) {
             double radius = 10.0;
-            int numArrows = 20; // Number of arrows to summon
+            int numArrows = 100; // Number of arrows to summon
 
             // Summon arrows around the player
             summonArrowRain(world, player, radius, numArrows);
@@ -54,7 +55,7 @@ public class ArrowRainItem extends Item {
             double d4 = Math.sqrt(d0 * d0 + d2 * d2);
 
             ArrowEntity arrow = new ArrowEntity(world, player);
-            arrow.refreshPositionAndAngles(player.getX() + d0, player.getY() + 20, player.getZ() + d2, 0, 0);
+            arrow.refreshPositionAndAngles(player.getX() + d0, player.getY() + 75, player.getZ() + d2, 0, 0);
             arrow.setVelocity(0, -2, 0);
             world.spawnEntity(arrow);
         }
