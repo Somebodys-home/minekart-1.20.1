@@ -1,31 +1,30 @@
 package net.gabriel.minekart.item.custom;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.gabriel.minekart.Minekart;
-import net.gabriel.minekart.item.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class SpeedBumpItem extends Item {
+import java.util.List;
 
-    public SpeedBumpItem(Settings settings) {
-        super(settings);
+public class WindBurstItem extends Item {
+
+    public WindBurstItem() {
+        super(new FabricItemSettings().maxCount(1));
+    }
+
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("tooltip.minekart.wind_burst.tooltip"));
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     public ActionResult useOnBlock(ItemUsageContext context) {
@@ -36,15 +35,16 @@ public class SpeedBumpItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
 
-        if (!world.isClient) {
+        if (world.isClient) {
             if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity) {
                 BoatEntity boat = (BoatEntity) player.getVehicle();
-                boat.setVelocity(boat.getVelocity().add(0, 1, 0));
+                boat.setVelocity(boat.getVelocity().add(0, player.getMovementDirection().getOffsetY() + .5, 0));
                 boat.velocityModified = true;
-                player.sendMessage(Text.literal("test"), true);
+                player.sendMessage(Text.literal("Wee!"), true);
             }
         }
 
+        stack.decrement(1);
         return new TypedActionResult<>(ActionResult.SUCCESS, stack);
     }
 

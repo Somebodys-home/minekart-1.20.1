@@ -64,9 +64,9 @@ public class MysteryBlock extends Block {
         ItemStack item;
 
         if (random.nextInt(2) == 0) {
-            item = new ItemStack(ModItems.SPEED_BUMP);
+            item = new ItemStack(ModItems.WIND_BURST);
         } else {
-            item = new ItemStack(ModItems.FIREWORK_CROSSBOW);
+            item = new ItemStack(ModItems.FIREWORK);
         }
 
         if (!player.getInventory().insertStack(item)) {
