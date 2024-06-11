@@ -1,5 +1,6 @@
 package net.gabriel.minekart.item.custom;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,8 +12,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class InvisappleItem extends Item {
-    public InvisappleItem(Settings settings) {
-        super(settings);
+    public InvisappleItem() {
+        super(new FabricItemSettings().maxCount(1));
     }
 
     @Override
