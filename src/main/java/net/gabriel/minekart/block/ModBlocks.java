@@ -12,7 +12,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    public static final Block MYSTERY_BLOCK = registerBlock("mystery_block", new MysteryBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block MYSTERY_BLOCK = registerBlock("mystery_block", new MysteryBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).noCollision().nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -22,7 +22,6 @@ public class ModBlocks {
     private static Item registerBlockItem(String name, Block block) {
         return Registry.register(Registries.ITEM, new Identifier(Minekart.MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
     }
-
     public static void registerModBlocks() {
         Minekart.LOGGER.info("Registering MysteryBox for " + Minekart.MOD_ID);
     }
