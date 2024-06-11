@@ -42,6 +42,8 @@ public class MysteryBlock extends Block {
             PlayerEntity player = (PlayerEntity) entity;
 
             if (!state.get(ACTIVATED)) {
+                world.setBlockState(pos, state.with(ACTIVATED, true), 3);
+
                 // Grant a random ability item to the player
                 getRandomAbilityItem((ServerWorld) world, player);
 
@@ -66,8 +68,9 @@ public class MysteryBlock extends Block {
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        // Place a new Mystery Block at the same position
-        world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, false), 3);
+        if (state.get(ACTIVATED)) {
+            world.setBlockState(pos, state.with(ACTIVATED, false), 3);
+        }
     }
 
 
