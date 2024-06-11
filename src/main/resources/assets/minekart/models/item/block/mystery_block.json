@@ -3,7 +3,7 @@
 	"parent": "block/cube_all",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "minekart:block/mystery_block",
+		"all": "minekart:block/mystery_block",
 		"particle": "minekart:block/mystery_block"
 	},
 	"elements": [

@@ -47,6 +47,4 @@ public class WindBurstItem extends Item {
         stack.decrement(1);
         return new TypedActionResult<>(ActionResult.SUCCESS, stack);
     }
-
-
 }

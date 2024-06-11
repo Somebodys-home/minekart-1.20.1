@@ -1,6 +1,7 @@
 package net.gabriel.minekart.item.custom;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,7 +17,6 @@ public class InvisappleItem extends Item {
     public InvisappleItem() {
         super(new FabricItemSettings().maxCount(1));
     }
-
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
