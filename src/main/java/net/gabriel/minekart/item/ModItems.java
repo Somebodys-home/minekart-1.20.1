@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
     public static final Item VANILLA_ICE_CREAM = registerItem("vanilla_ice_cream", new VanillaIceCreamItem(ModFoodComponents.VANILLA_ICE_CREAM, 25));
+    public static final Item INVISAPPLE = registerItem("invisapple", new InvisappleItem());
     public static final Item WIND_BURST = registerItem("wind_burst", new WindBurstItem());
     public static final Item ARROW_RAIN = registerItem("arrow_rain", new ArrowRainItem());
     public static final Item FIREWORK = registerItem("firework", new FireworkItem());
