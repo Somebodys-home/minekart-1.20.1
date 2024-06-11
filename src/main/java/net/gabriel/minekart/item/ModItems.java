@@ -1,5 +1,6 @@
 package net.gabriel.minekart.item;
 
+
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.gabriel.minekart.Minekart;
@@ -17,6 +18,7 @@ public class ModItems {
     public static final Item WIND_BURST = registerItem("wind_burst", new WindBurstItem());
     public static final Item ARROW_RAIN = registerItem("arrow_rain", new ArrowRainItem());
     public static final Item FIREWORK = registerItem("firework", new FireworkItem());
+    public static final Item INVISAPPLE = registerItem("invisapple", new InvisappleItem());
 
     private final String id;
     private final Item item;

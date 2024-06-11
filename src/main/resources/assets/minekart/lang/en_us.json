@@ -5,7 +5,7 @@
 
   "block.minekart.mystery_block": "Mystery Block",
 
-  "item.minekart.cloak_of_invisibility": "Cloak of Invisibility",
+  "item.minekart.invisapple": "Invisapple",
 
   "item.minekart.firework": "Firework",
 
@@ -19,5 +19,7 @@
 
   "tooltip.minekart.firework.tooltip": "But BETTER!",
 
-  "tooltip.minekart.wind_burst.tooltip": "1.21 isn't out yet, sue me."
+  "tooltip.minekart.wind_burst.tooltip": "1.21 isn't out yet, sue me.",
+
+  "tooltip.minekart.infiniboat.tooltip": "Trademark."
 }

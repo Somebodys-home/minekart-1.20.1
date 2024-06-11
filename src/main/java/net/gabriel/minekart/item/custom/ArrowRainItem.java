@@ -44,7 +44,7 @@ public class ArrowRainItem extends Item {
 
         if (!world.isClient) {
             double radius = 10.0;
-            int numArrows = 100; // Number of arrows to summon
+            int numArrows = 250; // Number of arrows to summon
 
             // Summon arrows around the player
             summonArrowRain(world, player, radius, numArrows);
