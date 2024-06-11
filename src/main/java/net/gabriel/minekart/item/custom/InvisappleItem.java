@@ -17,7 +17,7 @@ public class InvisappleItem extends Item {
         super(new FabricItemSettings().maxCount(1));
     }
 
-    @Override
+
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
 

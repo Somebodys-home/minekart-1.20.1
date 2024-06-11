@@ -18,6 +18,7 @@ public class Minekart implements ModInitializer {
 	public static final String MOD_ID = "minekart";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
@@ -25,7 +26,7 @@ public class Minekart implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModFoodComponents.registerModItems();
 
-		Registry.register(Registries.BLOCK, new Identifier("minekart", "mystery_block"), MysteryBlock.MYSTERY_BLOCK);
-		Registry.register(Registries.ITEM, new Identifier("minekart", "mystery_block"), new BlockItem(MysteryBlock.MYSTERY_BLOCK, new FabricItemSettings()));
+//		Registry.register(Registries.BLOCK, new Identifier("minekart", "mystery_block"), MysteryBlock.MYSTER);
+//		Registry.register(Registries.ITEM, new Identifier("minekart", "mystery_block"), new BlockItem(MysteryBlock.MYSTERY_BLOCK, new FabricItemSettings()));
 	}
 }
