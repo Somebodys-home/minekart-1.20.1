@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "minekart:block/item_box"
+      "model": "minekart:block/mystery_box"
     }
   }
 }
