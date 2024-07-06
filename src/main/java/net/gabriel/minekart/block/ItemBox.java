@@ -19,13 +19,13 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Random;
 
-public class MysteryBlock extends Block {
+public class ItemBox extends Block {
     public static final BooleanProperty ACTIVATED = Properties.POWERED;
 
-    public MysteryBlock(Settings settings) {
+
+    public ItemBox(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(ACTIVATED, false));
     }
@@ -43,34 +43,33 @@ public class MysteryBlock extends Block {
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!world.isClient && entity instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) entity;
+            if (entity instanceof PlayerEntity player) {
+                if (!state.get(ACTIVATED)) {
+                    // Grant a random ability item to the player
+                    getRandomAbilityItem((ServerWorld) world, player);
 
-            if (!state.get(ACTIVATED)) {
-                // Grant a random ability item to the player
-                getRandomAbilityItem((ServerWorld) world, player);
-
-                // Remove the block and set it as activated
-                world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-                world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-
-
-                new Thread(() -> {
-                    try {
-                        Thread.sleep(3000); // Wait for 3 seconds
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, false), 3);
-                }).start();
+                    // Remove the block and set it as activated
+                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                    world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
 
 
-
+                    new Thread(() -> {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, false));
+                    }).start();
+                }
             }
+
+
         }
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        // Place a new Mystery Block at the same position
+        // Place a new item box at the same position
         world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, false), 3);
     }
 
@@ -84,10 +83,8 @@ public class MysteryBlock extends Block {
             item = new ItemStack(ModItems.FIREWORK);
         } else if (num == 1) {
             item = new ItemStack(ModItems.WIND_BURST);
-        } else if (num == 2) {
-            item = new ItemStack(ModItems.ARROW_RAIN);
         } else {
-            item = new ItemStack(ModItems.INVISAPPLE);
+            item = new ItemStack(ModItems.ARROW_RAIN);
         }
 
         if (!player.getInventory().insertStack(item)) {

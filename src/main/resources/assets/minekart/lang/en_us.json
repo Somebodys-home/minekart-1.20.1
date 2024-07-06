@@ -3,7 +3,7 @@
 
   "item.minekart.wind_burst": "Wind Burst",
 
-  "block.minekart.mystery_box": "Mystery Box",
+  "block.minekart.item_box": "Item Box",
 
   "item.minekart.invisapple": "Invisapple",
 
@@ -13,13 +13,11 @@
 
   "itemgroup.minekart": "Minekart",
 
-  "tooltip.minekart.vanilla_ice_cream.tooltip": "You're a special breed of dumbass no person with motor skills should reasonably be.",
+  "tooltip.minekart.vanilla_ice_cream.tooltip": "Was it worth it?",
 
   "tooltip.minekart.arrow_rain.tooltip": "Sticks and stones may not break bones, but they do break boats!",
 
   "tooltip.minekart.firework.tooltip": "But BETTER!",
 
-  "tooltip.minekart.wind_burst.tooltip": "1.21 isn't out yet, sue me.",
-
-  "tooltip.minekart.infiniboat.tooltip": "Trademark."
+  "tooltip.minekart.wind_burst.tooltip": "WELL WHY DON'T YOU UPDATE TO 1.21 FOR ME?!."
 }

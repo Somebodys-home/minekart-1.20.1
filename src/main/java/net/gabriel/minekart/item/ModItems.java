@@ -1,22 +1,25 @@
 package net.gabriel.minekart.item;
 
 
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.gabriel.minekart.Minekart;
-import net.gabriel.minekart.block.MysteryBlock;
 import net.gabriel.minekart.item.custom.*;
 import net.gabriel.minekart.item.custom.VanillaIceCreamItem;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
     public static final Item VANILLA_ICE_CREAM = registerItem("vanilla_ice_cream", new VanillaIceCreamItem(ModFoodComponents.VANILLA_ICE_CREAM, 25));
-    public static final Item INVISAPPLE = registerItem("invisapple", new InvisappleItem());
     public static final Item WIND_BURST = registerItem("wind_burst", new WindBurstItem());
     public static final Item ARROW_RAIN = registerItem("arrow_rain", new ArrowRainItem());
     public static final Item FIREWORK = registerItem("firework", new FireworkItem());

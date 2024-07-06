@@ -1,16 +1,10 @@
 package net.gabriel.minekart;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.gabriel.minekart.block.MysteryBlock;
 import net.gabriel.minekart.item.ModFoodComponents;
 import net.gabriel.minekart.item.ModItemGroups;
 import net.gabriel.minekart.item.ModItems;
 import net.gabriel.minekart.block.ModBlocks;
-import net.minecraft.item.BlockItem;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,12 +15,9 @@ public class Minekart implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModBlocks.initialize();
 		ModItems.registerModItems();
 		ModItemGroups.registerItemGroups();
-		ModBlocks.registerModBlocks();
 		ModFoodComponents.registerModItems();
-
-//		Registry.register(Registries.BLOCK, new Identifier("minekart", "mystery_block"), MysteryBlock.MYSTER);
-//		Registry.register(Registries.ITEM, new Identifier("minekart", "mystery_block"), new BlockItem(MysteryBlock.MYSTERY_BLOCK, new FabricItemSettings()));
 	}
 }

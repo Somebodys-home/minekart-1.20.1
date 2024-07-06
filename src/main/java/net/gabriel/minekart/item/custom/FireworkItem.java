@@ -42,7 +42,7 @@ public class FireworkItem extends Item {
             if (hand == Hand.MAIN_HAND) {
                 if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity) {
                     BoatEntity boat = (BoatEntity) player.getVehicle();
-                    boat.setVelocity(boat.getVelocity().add(player.getMovementDirection().getOffsetX() * .8, 0, player.getMovementDirection().getOffsetX() * .8));
+                    boat.setVelocity(boat.getVelocity().add(player.getMovementDirection().getOffsetX() * .8, 0, 0));
                     boat.velocityModified = true;
                     world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_BOAT_PADDLE_WATER, SoundCategory.PLAYERS, 1.0F, 1.0F);
                     player.sendMessage(Text.literal("I AM SPEED!"), true);
