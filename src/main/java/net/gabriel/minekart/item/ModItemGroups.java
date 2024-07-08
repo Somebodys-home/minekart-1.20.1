@@ -17,11 +17,11 @@ public class ModItemGroups {
             new Identifier(Minekart.MOD_ID, "minekart"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.minekart"))
                     .icon(() -> new ItemStack(Items.BLUE_ICE)).entries((displayContext, entries) -> {
-                        entries.add(ModItems.VANILLA_ICE_CREAM);
+                        entries.add(ModBlocks.ITEM_BOX);
                         entries.add(ModItems.WIND_BURST);
                         entries.add(ModItems.FIREWORK);
                         entries.add(ModItems.ARROW_RAIN);
-                        entries.add(ModBlocks.ITEM_BOX);
+                        entries.add(ModItems.VANILLA_ICE_CREAM);
                     }).build());
 
     public static void registerItemGroups() {

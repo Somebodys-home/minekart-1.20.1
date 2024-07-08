@@ -38,7 +38,7 @@ public class WindBurstItem extends Item {
         if (world.isClient) {
             if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity) {
                 BoatEntity boat = (BoatEntity) player.getVehicle();
-                boat.setVelocity(boat.getVelocity().add(0, player.getMovementDirection().getOffsetY() + .5, 0));
+                boat.setVelocity(boat.getVelocity().add(0, player.getMovementDirection().getOffsetY() + .7, 0));
                 boat.velocityModified = true;
                 player.sendMessage(Text.literal("Wee!"), true);
             }

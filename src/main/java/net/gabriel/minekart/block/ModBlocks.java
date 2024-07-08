@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
     public static final Block ITEM_BOX = register(
-            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.AMETHYST_BLOCK)),
+            new ItemBox(AbstractBlock.Settings.create().sounds(BlockSoundGroup.AMETHYST_BLOCK)),
             "item_box",
             true
     );

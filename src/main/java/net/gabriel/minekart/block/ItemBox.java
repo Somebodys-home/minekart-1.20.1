@@ -36,10 +36,9 @@ public class ItemBox extends Block {
     }
 
     @Override
-    public VoxelShape getOutlineShape(@NotNull BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.empty();
     }
-
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!world.isClient && entity instanceof PlayerEntity) {
@@ -55,7 +54,7 @@ public class ItemBox extends Block {
 
                     new Thread(() -> {
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(3000); // Wait for 3 seconds
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -63,12 +62,10 @@ public class ItemBox extends Block {
                     }).start();
                 }
             }
-
-
         }
     }
 
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void scheduledTick(BlockState state, World world, BlockPos pos) {
         // Place a new item box at the same position
         world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, false), 3);
     }
