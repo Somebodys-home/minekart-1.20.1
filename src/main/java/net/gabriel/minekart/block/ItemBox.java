@@ -1,9 +1,9 @@
 package net.gabriel.minekart.block;
 
 import net.gabriel.minekart.item.ModItems;
+import net.gabriel.minekart.util.ServerScheduler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,23 +11,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
-import org.jetbrains.annotations.NotNull;
+
 import java.util.Random;
 
 public class ItemBox extends Block {
-    public static final BooleanProperty ACTIVATED = Properties.POWERED;
+    public static final BooleanProperty ACTIVATED = BooleanProperty.of("activated");
 
 
     public ItemBox(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(ACTIVATED, false));
+        setDefaultState(this.stateManager.getDefaultState().with(ACTIVATED, false));
     }
 
     @Override
@@ -42,24 +40,17 @@ public class ItemBox extends Block {
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!world.isClient && entity instanceof PlayerEntity) {
+            boolean activated = state.get(ACTIVATED);
+
+
             if (entity instanceof PlayerEntity player) {
                 if (!state.get(ACTIVATED)) {
                     // Grant a random ability item to the player
                     getRandomAbilityItem((ServerWorld) world, player);
+                    ServerScheduler.schedule(() -> {world.setBlockState(pos, state.with(ACTIVATED, !activated));}, 20);
+                    // Flip the value of activated and save the new blockstate.mo
 
-                    // Remove the block and set it as activated
-                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
-                    world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-
-
-                    new Thread(() -> {
-                        try {
-                            Thread.sleep(3000); // Wait for 3 seconds
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, false));
-                    }).start();
+                    world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, activated));
                 }
             }
         }
