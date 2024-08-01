@@ -4,6 +4,7 @@ import net.gabriel.minekart.item.ModItems;
 import net.gabriel.minekart.util.ServerScheduler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -39,18 +40,23 @@ public class ItemBox extends Block {
     }
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        final BlockPos finalpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
+
         if (!world.isClient && entity instanceof PlayerEntity) {
             boolean activated = state.get(ACTIVATED);
 
 
             if (entity instanceof PlayerEntity player) {
                 if (!state.get(ACTIVATED)) {
-                    // Grant a random ability item to the player
                     getRandomAbilityItem((ServerWorld) world, player);
-                    ServerScheduler.schedule(() -> {world.setBlockState(pos, state.with(ACTIVATED, !activated));}, 20);
-                    // Flip the value of activated and save the new blockstate.mo
+                    world.setBlockState(finalpos, Blocks.AIR.getDefaultState());
+                    System.out.println("Block position: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ", ");
 
-                    world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, activated));
+                    ServerScheduler.schedule(() -> {
+
+                        world.setBlockState(finalpos, state.with(ACTIVATED, activated));
+                        System.out.println("Block position: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ", ");
+                    }, 20);
                 }
             }
         }
