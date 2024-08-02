@@ -48,27 +48,18 @@ public class ItemBox extends Block {
 
             if (entity instanceof PlayerEntity player) {
                 if (!state.get(ACTIVATED)) {
-                    getRandomAbilityItem((ServerWorld) world, player);
+                    getRandomAbilityItem(player);
                     world.setBlockState(finalpos, Blocks.AIR.getDefaultState());
-                    System.out.println("Block position: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ", ");
 
                     ServerScheduler.schedule(() -> {
-
                         world.setBlockState(finalpos, state.with(ACTIVATED, activated));
-                        System.out.println("Block position: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ", ");
                     }, 20);
                 }
             }
         }
     }
 
-    public void scheduledTick(BlockState state, World world, BlockPos pos) {
-        // Place a new item box at the same position
-        world.setBlockState(pos, this.getDefaultState().with(ACTIVATED, false), 3);
-    }
-
-
-    private void getRandomAbilityItem(ServerWorld world, PlayerEntity player) {
+    private void getRandomAbilityItem(PlayerEntity player) {
         Random random = new Random();
         int num = random.nextInt(4);
         ItemStack item;

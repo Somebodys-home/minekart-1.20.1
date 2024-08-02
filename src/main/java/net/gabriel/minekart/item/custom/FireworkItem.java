@@ -1,6 +1,7 @@
 package net.gabriel.minekart.item.custom;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.gabriel.minekart.util.ServerScheduler;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
@@ -42,10 +43,9 @@ public class FireworkItem extends Item {
             if (hand == Hand.MAIN_HAND) {
                 if (player.hasVehicle() && player.getVehicle() instanceof BoatEntity) {
                     BoatEntity boat = (BoatEntity) player.getVehicle();
-                    boat.setVelocity(boat.getVelocity().add(player.getVehicle().getVelocity().x * .8, 0, player.getVehicle().getVelocity().z * .8));
+                    boat.addVelocity(boat.getHorizontalFacing().getOffsetX() * 1.5, 0, boat.getHorizontalFacing().getOffsetZ() * 1.5);
                     boat.velocityModified = true;
                     world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_FIREWORK_ROCKET_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F);
-                    player.sendMessage(Text.literal("I AM SPEED!"), true);
                 }
             }
         }

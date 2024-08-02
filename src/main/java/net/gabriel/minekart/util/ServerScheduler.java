@@ -1,6 +1,5 @@
 package net.gabriel.minekart.util;
 
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import java.util.HashMap;
 import java.util.Map;
 
